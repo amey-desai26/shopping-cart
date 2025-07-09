@@ -1,0 +1,61 @@
+<div class="cart-container">
+  <mat-card class="cart-card" appearance="outlined">
+    <mat-card-header class="cart-card__header">
+      <mat-card-title>Shopping Cart</mat-card-title>
+      <div class="subtotal" *ngIf="cartResponse?.items?.length > 0">
+        Subtotal <span>({{ cartResponse?.items?.length }} items) </span>:
+        <span class="subtotal__amount">{{
+          cartResponse?.totalPrice | number : "1.2-2"
+        }}</span>
+      </div>
+    </mat-card-header>
+    <div class="seperator"></div>
+    <mat-card-content class="cart-card__content">
+      <ng-container *ngIf="cartResponse?.items?.length === 0; else cartItems">
+        <div class="empty-cart">
+          <mat-icon>sentiment_neutral</mat-icon>
+          <span>Your cart is empty</span>
+        </div>
+      </ng-container>
+      <ng-template #cartItems>
+        <div
+          class="cart-items"
+          *ngFor="let item of cartResponse?.items; let i = index"
+        >
+          <div class="cart-items__image">
+            <img mat-card-image class="item-image" [src]="item.imageUrl" />
+          </div>
+          <div class="cart-items__rightpanel">
+            <div class="name">{{ item.name }}</div>
+            <div class="quantity-controls-container">
+              <span> Quantity:</span>
+              <div class="quantity-controls">
+                <button
+                  mat-icon-button
+                  color="primary"
+                  (click)="decrementQuantity(item)"
+                >
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <span class="quantity">{{ item.quantity }}</span>
+                <button
+                  mat-icon-button
+                  color="primary"
+                  (click)="incrementQuantity(item)"
+                >
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="price">
+              <span class="label"> Price:</span>
+              <span class="amount">{{
+                item.price * item.quantity | number : "1.2-2"
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>

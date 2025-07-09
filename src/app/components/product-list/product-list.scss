@@ -1,0 +1,33 @@
+.product-list {
+  background: linear-gradient(to bottom, #3775fb 20%, #e3e6e6 50%);
+  height: calc(100vh - 7rem);
+  padding: 1.5rem 8rem;
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 10px;
+    .product-card {
+      max-width: 255px;
+      max-height: 360px;
+      &__header {
+        padding: 10px 16px 10px;
+      }
+      &__content {
+        p {
+          position: relative;
+          padding-left: 1em;
+        }
+        p::before {
+          content: "$";
+          position: absolute;
+          left: 5px;
+        }
+      }
+      .product-image {
+        min-width: 250px;
+        min-height: 225px;
+      }
+    }
+  }
+}

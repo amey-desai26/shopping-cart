@@ -1,0 +1,74 @@
+<section class="navigation">
+  <mat-toolbar color="primary" class="mat-elevation-z4 shopping-header">
+    <span class="logo" (click)="gotoProductList()">
+      <mat-icon>shopping_cart</mat-icon>
+      <span class="title">E-Shopping</span>
+    </span>
+    <div class="search">
+      <button matButton class="sortby" [matMenuTriggerFor]="menu">
+        Sort by
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="sortBy('price', 'asc')"
+          [class.selected]="
+            selectedSortBy === 'price' && selectedSortOrder === 'asc'
+          "
+        >
+          Price - Low to High
+        </button>
+        <button
+          mat-menu-item
+          (click)="sortBy('price', 'desc')"
+          [class.selected]="
+            selectedSortBy === 'price' && selectedSortOrder === 'desc'
+          "
+        >
+          Price - High to Low
+        </button>
+        <button
+          mat-menu-item
+          (click)="sortBy('name', 'asc')"
+          [class.selected]="
+            selectedSortBy === 'name' && selectedSortOrder === 'asc'
+          "
+        >
+          Name - A to Z
+        </button>
+        <button
+          mat-menu-item
+          (click)="sortBy('name', 'desc')"
+          [class.selected]="
+            selectedSortBy === 'name' && selectedSortOrder === 'desc'
+          "
+        >
+          Name - Z to A
+        </button>
+      </mat-menu>
+      <mat-form-field appearance="outline" class="search-box">
+        <input
+          matInput
+          placeholder="Search products"
+          [(ngModel)]="searchValue"
+          (ngModelChange)="onSearchInput($event)"
+        />
+      </mat-form-field>
+      <div class="search__title">
+        <button mat-icon-button class="search-icon">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <button
+      matButton="elevated"
+      matBadge="{{ cartCount }}"
+      matBadgePosition="after"
+      matBadgeSize="large"
+      (click)="goToCart()"
+    >
+      <mat-icon>shopping_bag</mat-icon> Cart
+    </button>
+  </mat-toolbar>
+</section>
