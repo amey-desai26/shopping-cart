@@ -1,11 +1,8 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  OnInit,
   OnDestroy,
   inject,
-  EventEmitter,
-  Output,
   Input,
   OnChanges,
   SimpleChanges,
@@ -34,7 +31,7 @@ import { SharedStateService } from '../../services/shared-state.service';
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
-export class ProductList implements OnInit, OnDestroy, OnChanges {
+export class ProductList implements OnDestroy, OnChanges {
   public products: Product[] = [];
   private subscriptions: Subscription[] = [];
   private readonly productService = inject(ProductService);
@@ -63,10 +60,6 @@ export class ProductList implements OnInit, OnDestroy, OnChanges {
         this.products = data;
       });
     this.subscriptions.push(sub);
-  }
-
-  ngOnInit() {
-    this.fetchProducts();
   }
 
   ngOnDestroy() {

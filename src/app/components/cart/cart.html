@@ -54,6 +54,15 @@
               }}</span>
             </div>
           </div>
+          <div class="cart-items__actions">
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="removeItem(item, true)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
       </ng-template>
     </mat-card-content>
