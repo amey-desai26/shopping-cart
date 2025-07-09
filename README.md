@@ -27,8 +27,7 @@ Key features:
    cd shopping-cart
 ```
 
-2. Install Dependencies
-   Install all required npm packages:
+2. Install Dependencies: Install all required npm packages:
 
 ```bash
    npm install
