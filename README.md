@@ -23,7 +23,7 @@ Key features:
    If you haven't already, clone your project repository:
 
 ```bash
-   git clone https://github.com/amey-d2611/e-shopping-frontend
+   git clone https://github.com/amey-desai26/shopping-cart
    cd shopping-cart
 ```
 
